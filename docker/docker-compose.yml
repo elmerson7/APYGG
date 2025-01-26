@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: api-laravel
+    volumes:
+      - ../:/var/www/html
+    ports:
+      - "8080:80"
