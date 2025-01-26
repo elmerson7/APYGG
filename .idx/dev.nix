@@ -3,11 +3,13 @@
 {pkgs}: {
   # Which nixpkgs channel to use.
   channel = "stable-24.05"; # or "unstable"
+  services.docker.enable = true;
+
   # Use https://search.nixos.org/packages to find packages
   packages = [
-    pkgs.php82
-    pkgs.php82Packages.composer
-    pkgs.nodejs_20
+    # pkgs.php82
+    # pkgs.php82Packages.composer
+    # pkgs.nodejs_20
     pkgs.htop
     pkgs.nano
     pkgs.openssh
@@ -20,6 +22,7 @@
     extensions = [
       # "vscodevim.vim"
       "eamodio.gitlens"
+      "ms-azuretools.vscode-docker"
     ];
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
@@ -33,6 +36,13 @@
       onStart = {
         # Example: start a background task to watch and re-build backend code
         # watch-backend = "npm run watch-backend";
+        # Inicia el contenedor Docker
+        start-docker-container = ''
+          docker start api-laravel &&
+          docker exec -it api-laravel bash -c "
+            php artisan serve
+          "
+        '';
       };
       
     };
@@ -40,10 +50,10 @@
     previews = {
       enable = true;
       previews = {
-        web = {
-          command = ["php" "artisan" "serve" "--port" "$PORT" "--host" "0.0.0.0"];
-          manager = "web";
-        };
+        # web = {
+        #   command = ["php" "artisan" "serve" "--port" "$PORT" "--host" "0.0.0.0"];
+        #   manager = "web";
+        # };
       };
     };
   };
