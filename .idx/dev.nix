@@ -7,7 +7,7 @@
 
   # Use https://search.nixos.org/packages to find packages
   packages = [
-    # pkgs.php82
+    pkgs.php82
     # pkgs.php82Packages.composer
     # pkgs.nodejs_20
     pkgs.htop
@@ -23,6 +23,15 @@
       # "vscodevim.vim"
       "eamodio.gitlens"
       "ms-azuretools.vscode-docker"
+      "christian-kohler.path-intellisense"
+      "Durzn.brackethighlighter"
+      "naumovs.color-highlight"
+      "PKief.material-icon-theme"
+      "zobo.php-intellisense"
+      "onecentlin.laravel5-snippets"
+      "Atishay-Jain.All-Autocomplete"
+      "earshinov.simple-alignment"
+      "oderwat.indent-rainbow"
     ];
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
